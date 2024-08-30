@@ -20,4 +20,8 @@ export class UserService {
     //tem que se ciar uma interface com os dtos de entarda e de saida
     //os de saida com estatus e mensagem 
   }
+
+  findOneByEmail(email: string) {
+    return this.usersRepository.findOneBy({ email });
+  }
 }

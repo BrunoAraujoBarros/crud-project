@@ -12,8 +12,8 @@ export class user {
   @Column()
   email: string;
 
-  @Column('int')
-  senha: number;
+  @Column()
+  senha: string;
 
   @Column({
     type: 'enum',
