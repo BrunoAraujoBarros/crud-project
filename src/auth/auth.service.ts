@@ -16,7 +16,7 @@ export class AuthService {
 
      async signIn(email: string, senha: string): Promise<{token: string, expiresIn : number}> {
         const foundUser = await this.userService.findOneByEmail(email)
-        if(!foundUser || senha !== foundUser.senha ){
+        if(foundUser?.senha !== senha){
             throw new UnauthorizedException();
         }
         const payload = {id: foundUser.id, email : foundUser.email}
