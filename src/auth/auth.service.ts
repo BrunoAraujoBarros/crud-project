@@ -14,9 +14,9 @@ export class AuthService {
         this.jwtExpirationTimeInSeconds = +this.configService.get<number>('JWT_EXPIRATION_TIME')
      }
 
-     async signIn(email: string, senha: string): Promise<{token: string, expiresIn : number}> {
+     async signIn(email: string, password: string): Promise<{token: string, expiresIn : number}> {
         const foundUser = await this.userService.findOneByEmail(email)
-        if(foundUser?.senha !== senha){
+        if(foundUser?.password !== password){
             throw new UnauthorizedException();
         }
         const payload = {id: foundUser.id, email : foundUser.email}

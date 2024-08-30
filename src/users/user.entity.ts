@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { ServiceType } from 'src/enums/service-type.enum';
 
 @Entity()
-export class user {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -13,7 +13,7 @@ export class user {
   email: string;
 
   @Column()
-  senha: string;
+  password: string;
 
   @Column({
     type: 'enum',

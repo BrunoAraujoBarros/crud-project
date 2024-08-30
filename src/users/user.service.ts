@@ -1,19 +1,19 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { user } from './user.entity';
-import { CreateUserDto } from 'src/dtos/create-user.dto';
+import { User } from './user.entity';
+import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 
 @Injectable()
 export class UserService {
   constructor(
     @Inject('USERS_REPOSITORY')
-    private usersRepository: Repository<user>,
+    private usersRepository: Repository<User>,
   ) {}
 
-  async listar(): Promise<user[]> {
+  async list(): Promise<User[]> {
     return this.usersRepository.find();
   }
-  async createUser(createUserDto: CreateUserDto): Promise<user> {
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
     const user = this.usersRepository.create(createUserDto);
     return this.usersRepository.save(user);
     // para retonar o erro no .then eno .chach 

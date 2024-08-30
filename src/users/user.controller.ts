@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { UserService } from './user.service';
-import { user } from './user.entity';
+import { User } from './user.entity';
 import { get  } from 'http';
-import { CreateUserDto } from 'src/dtos/create-user.dto';
+import { CreateUserDto } from '../users/dtos/create-user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly UserService: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
-  @Get('listar')
-  async listar(): Promise<user[]>{
-    return this.UserService.listar();
+  @Get('list')
+  async list(): Promise<User[]>{
+    return this.userService.list();
   }
-
+  //Pode user .param pra lidar na URL 
   @Post('cadastrar')
-  async cadastrar(@Body() data: CreateUserDto): Promise<user>{
-    return this.UserService.createUser(data);
+  async register(@Body() data: CreateUserDto): Promise<User>{
+    return this.userService.createUser(data);
   }
 }

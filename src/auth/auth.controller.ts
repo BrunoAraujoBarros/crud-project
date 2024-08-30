@@ -11,10 +11,10 @@ export class AuthController {
     @Post('login')
     singIn(
         @Body('email') email: string,
-        @Body('senha') senha: string,
+        @Body('password') password: string,
         
     ){
-        return this.authService.signIn(email, senha);
+        return this.authService.signIn(email, password);
         
     }
     
